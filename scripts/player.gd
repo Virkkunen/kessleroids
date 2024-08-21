@@ -78,4 +78,5 @@ func shoot() -> void:
 ###
 
 func get_hit() -> void:
-	Game.player_instance.queue_free()
+	if is_instance_valid(Game.player_instance):
+		Game.player_instance.queue_free()
