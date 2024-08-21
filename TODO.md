@@ -16,3 +16,6 @@
 - [ ] sfx
 - [ ] add limited shots
 	- shoot 5, can't shoot again until they all despawn
+- [ ] refactor
+	- I added all the game logic in a global script that isn't linked to any node
+	- just put stuff in the main Game scene and leave the globals for global states

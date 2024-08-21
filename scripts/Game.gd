@@ -9,16 +9,12 @@ extends Node2D
 
 @export var border_thickness: float = 60.0
 
-var lives : int = 3 setget set_lives
-signal lives_changed
-
-@onready var lives_label = $LivesLabel
+var lives : int = 3
 
 var player_scene = preload("res://scenes/player.tscn")
 @export var player_instance = null
 
 func _ready() -> void:
-	update_lives()
 	screenSize = get_viewport_rect().size
 	spawn_player()
 	
