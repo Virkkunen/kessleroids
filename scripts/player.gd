@@ -5,18 +5,19 @@ var speed = 200
 var maxSpeed = 420
 var rotationSpeed = 3
 var brakeSpeed = 120
+#var boost_active = false
 
 # apparently I need to preload the textures to change them
-var defaultShip = preload("res://assets/ship.png")
-var boostingShip = preload("res://assets/ship02.png")
-var breakingShip = preload("res://assets/ship03.png")
+#var defaultShip = preload("res://assets/ship.png")
+#var boostingShip = preload("res://assets/ship02.png")
+#var breakingShip = preload("res://assets/ship03.png")
 var Projectile = preload("res://scenes/projectile.tscn")
 
-@onready var sprite : Sprite2D = $Sprite2D
+@onready var ship_vector : Node2D = $ShipVector
 
-func _ready() -> void:
+#func _ready() -> void:
 	#screenSize = get_viewport_rect().size # this will get the screen size when loaded
-	$Sprite2D.texture = defaultShip
+	#$Sprite2D.texture = defaultShip
 
 func _physics_process(delta: float) -> void:
 	### MOVEMENT
@@ -28,19 +29,21 @@ func _physics_process(delta: float) -> void:
 		
 	# move
 	if Input.is_action_pressed("boost"):
+		ship_vector.set_boost_active(true)
 		velocity += Vector2(0, -speed).rotated(rotation) * delta
-		$Sprite2D.texture = boostingShip
+		#$Sprite2D.texture = boostingShip
 		if velocity.length() > maxSpeed:
 			velocity = velocity.normalized() * maxSpeed
-			$Sprite2D.texture = defaultShip
+			#$Sprite2D.texture = defaultShip
 	elif Input.is_action_pressed("brake"):
-		$Sprite2D.texture = defaultShip
+		#$Sprite2D.texture = defaultShip
 		# nested ifs this early
 		if velocity.length() > 0:
-			$Sprite2D.texture = breakingShip
+			#$Sprite2D.texture = breakingShip
 			velocity = velocity.move_toward(Vector2.ZERO, brakeSpeed * delta)
 	else:
-		$Sprite2D.texture = defaultShip
+		ship_vector.set_boost_active(false)
+		#$Sprite2D.texture = defaultShip
 
 	# applyu movement
 	move_and_slide()
