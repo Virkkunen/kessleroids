@@ -1,0 +1,16 @@
+- [ ] fix asteroids going over border
+- [ ] fix ship and projectiles wrapping around before border
+- [ ] fix asteroid collision velocity/rotation
+- [ ] update ship's collision to use vector points
+- [ ] add scoreboard (seconds alive)
+- [ ] add title screen
+	- play, controls, scoreboard, exit
+- [ ] add health system
+	- 3 lives, stop score when dead
+	- R to start again with onscreen hint
+	- death screen after lives lost
+- [ ] have projectiles break asteroids
+- [ ] have projectiles damage ship
+- [ ] asteroids break into smaller ones with random velocities, rotation and direction
+- [ ] add breaking effects
+- [ ] sfx
