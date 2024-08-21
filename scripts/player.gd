@@ -11,6 +11,10 @@ var Projectile = preload("res://scenes/projectile.tscn")
 @onready var utils = load("res://scripts/utils.gd").new()
 @onready var ship_vector : Node2D = $ShipVector
 
+@onready var audio_boost = $boost
+@onready var audio_brake = $brake
+@onready var audio_shot = $shot
+
 func _physics_process(delta: float) -> void:
 	### MOVEMENT
 	# rotate
@@ -23,10 +27,16 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("boost"):
 		ship_vector.set_boost_active(true)
 		velocity += Vector2(0, -speed).rotated(rotation) * delta
+		
+		if not audio_boost.playing:
+			audio_boost.play()
+		
 		if velocity.length() > maxSpeed:
 			velocity = velocity.normalized() * maxSpeed
+
 	elif Input.is_action_pressed("brake"):
-		# nested ifs this early
+		if not audio_brake.playing:
+			audio_brake.play()
 		if velocity.length() > 0:
 			velocity = velocity.move_toward(Vector2.ZERO, brakeSpeed * delta)
 	else:
@@ -40,7 +50,7 @@ func _physics_process(delta: float) -> void:
 		var body := collision.get_collider()
 		print("Collided with: ", body)
 		if body.is_in_group("Asteroids"):
-			get_hit()
+			Game.death()
 			body.velocity = Vector2(0, -speed).rotated(rotation) * 0.25
 			body.angular_velocity = velocity.length() * 0.08
 			print("Velocity: ", body.velocity.length())
@@ -58,9 +68,12 @@ func shoot() -> void:
 	proj.global_position = $Muzzle.global_position
 	proj.rotation = rotation
 	get_parent().add_child(proj)
+	if not audio_shot.playing:
+		audio_shot.play()
 	
 ###
 
 func get_hit() -> void:
 	if is_instance_valid(Game.player_instance):
 		Game.player_instance.queue_free()
+		Game.lives -= 1
