@@ -14,3 +14,5 @@
 - [ ] asteroids break into smaller ones with random velocities, rotation and direction
 - [ ] add breaking effects
 - [ ] sfx
+- [ ] add limited shots
+	- shoot 5, can't shoot again until they all despawn
