@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 var angular_velocity = 0.2
 
+@onready var utils = load("res://scripts/utils.gd").new()
 @onready var collision_polygon: CollisionPolygon2D = $Hitbox
-
 
 func _ready():
 	collision_polygon = CollisionPolygon2D.new()
@@ -32,15 +32,6 @@ func _physics_process(delta: float) -> void:
 	rotation += angular_velocity * delta
 	
 	move_and_slide()
-	# wrap around screen edges
-	if position.x > Game.screenSize.x:
-		position.x = 0
-	elif position.x < 0:
-		position.x = Game.screenSize.x
-	if position.y > Game.screenSize.y:
-		position.y = 0
-	elif position.y < 0:
-		position.y = Game.screenSize.y
 		
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
@@ -54,3 +45,5 @@ func _physics_process(delta: float) -> void:
 			velocity = -transfer_velocity
 			angular_velocity = -transfer_angular_velocity
 		
+	# wrap around screen edges
+	position = utils.wrap_around(position)
