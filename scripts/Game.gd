@@ -2,10 +2,10 @@ extends Node2D
 
 @export var screenSize = Vector2()
 
-@export var colour01 = Color().html("#9bbc0f")
-@export var colour02 = Color().html("#8bac0f")
-@export var colour03 = Color().html("#306230")
-@export var colour04 = Color().html("#0f380f")
+@export var colour01 = Color.html("#9bbc0f")
+@export var colour02 = Color.html("#8bac0f")
+@export var colour03 = Color.html("#306230")
+@export var colour04 = Color.html("#0f380f")
 
 @export var border_thickness: float = 60.0
 
