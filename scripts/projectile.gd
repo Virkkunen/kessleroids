@@ -24,5 +24,5 @@ func _draw() -> void:
 		Vector2(4, 0),
 		Vector2(0, 4)
 	]
-	draw_polygon(points, [Game.colour03])
+	draw_polygon(points, [Game.colour02])
 	collision_polygon.polygon = points

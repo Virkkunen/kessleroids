@@ -88,4 +88,4 @@ quit={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.0588235, 0.219608, 0.0588235, 1)
+environment/defaults/default_clear_color=Color(0.133333, 0.137255, 0.137255, 1)
