@@ -14,8 +14,8 @@ func _input(event: InputEvent) -> void:
 		spawn_player()
 	
 func spawn_player() -> void:
-	#if player_instance:
-		#player_instance.queue_free()
+	if is_instance_valid(player_instance):
+		player_instance.queue_free()
 	player_instance = player_scene.instantiate()
 	add_child(player_instance)
 	player_instance.position = screenSize / 2
