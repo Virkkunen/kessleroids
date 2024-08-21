@@ -12,6 +12,8 @@ var boostingShip = preload("res://assets/ship02.png")
 var breakingShip = preload("res://assets/ship03.png")
 var Projectile = preload("res://scenes/projectile.tscn")
 
+@onready var sprite : Sprite2D = $Sprite2D
+
 func _ready() -> void:
 	#screenSize = get_viewport_rect().size # this will get the screen size when loaded
 	$Sprite2D.texture = defaultShip
@@ -19,19 +21,19 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	### MOVEMENT
 	# rotate
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("rotate_left"):
 		rotation -= rotationSpeed * delta
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_pressed("rotate_right"):
 		rotation += rotationSpeed * delta
 		
 	# move
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("boost"):
 		velocity += Vector2(0, -speed).rotated(rotation) * delta
 		$Sprite2D.texture = boostingShip
 		if velocity.length() > maxSpeed:
 			velocity = velocity.normalized() * maxSpeed
 			$Sprite2D.texture = defaultShip
-	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("brake"):
 		$Sprite2D.texture = defaultShip
 		# nested ifs this early
 		if velocity.length() > 0:
@@ -39,9 +41,19 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity.move_toward(Vector2.ZERO, brakeSpeed * delta)
 	else:
 		$Sprite2D.texture = defaultShip
-		
+
 	# applyu movement
 	move_and_slide()
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		var body := collision.get_collider()
+		print("Collided with: ", body)
+		if body.is_in_group("Asteroids"):
+			get_hit()
+			body.velocity = Vector2(0, -speed).rotated(rotation) * 0.25
+			body.angular_velocity = velocity.length() * 0.08
+			print("Velocity: ", body.velocity.length())
+			print("Angular Velocity: ", body.angular_velocity)
 	
 	# wrap around screen edges
 	if position.x > Game.screenSize.x:
@@ -54,7 +66,7 @@ func _physics_process(delta: float) -> void:
 		position.y = Game.screenSize.y
 		
 	### SHOOTING
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("shoot"):
 		shoot()
 	
 func shoot() -> void:
@@ -62,3 +74,8 @@ func shoot() -> void:
 	proj.global_position = $Muzzle.global_position
 	proj.rotation = rotation
 	get_parent().add_child(proj)
+	
+###
+
+func get_hit() -> void:
+	Game.player_instance.queue_free()

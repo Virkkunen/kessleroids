@@ -9,8 +9,8 @@ radius = 4.0
 [node name="Projectile" type="Area2D"]
 script = ExtResource("1_4tft7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_hrbrc")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jy00x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hrbrc")

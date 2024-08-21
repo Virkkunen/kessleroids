@@ -14,3 +14,8 @@ polygon = PackedVector2Array(0, -16, -16, -1, -16, 2, -1, 10, 1, 10, 16, 2, 16, 
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(0, -15)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -16, -16, -1, -16, 2, -1, 10, 1, 10, 16, 2, 16, -1)
