@@ -17,7 +17,7 @@ func _ready() -> void:
 	spawn_player()
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("respawn"):
+	if event.is_action_pressed("respawn") and not is_instance_valid(player_instance) and not Global.dead:
 		spawn_player()
 	if event.is_action_pressed("quit"):
 		get_tree().quit()

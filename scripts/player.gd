@@ -6,6 +6,7 @@ var maxSpeed = 420
 var rotationSpeed = 3
 var brakeSpeed = 120
 var boost_active = false
+var hit_detected = false # trying to prevent multiple collisions per frame
 
 var Projectile = preload("res://scenes/projectile.tscn")
 
@@ -18,6 +19,7 @@ var Projectile = preload("res://scenes/projectile.tscn")
 @onready var audio_shot : AudioStreamPlayer2D = $shot
 
 func _physics_process(delta: float) -> void:
+	hit_detected = false
 	### MOVEMENT
 	# rotate
 	if Input.is_action_pressed("rotate_left"):
@@ -51,12 +53,9 @@ func _physics_process(delta: float) -> void:
 		var collision := get_slide_collision(i)
 		var body := collision.get_collider()
 		print("Collided with: ", body)
-		if body.is_in_group("Asteroids"):
+		if body.is_in_group("Asteroids") and not hit_detected:
+			hit_detected = true
 			Game.get_hit()
-			#body.velocity = Vector2(0, -speed).rotated(rotation) * 0.25
-			#body.angular_velocity = velocity.length() * 0.08
-			#print("Velocity: ", body.velocity.length())
-			#print("Angular Velocity: ", body.angular_velocity)
 	
 	# wrap around screen edges
 	position = utils.wrap_around(position)

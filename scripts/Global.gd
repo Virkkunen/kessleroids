@@ -7,6 +7,7 @@ extends Node2D
 
 var lives : int = 3
 var score : int = 0
+var dead = false
 
 signal lives_changed
 signal score_changed
@@ -15,10 +16,13 @@ func _ready() -> void:
 	screen_size = get_viewport_rect().size
 			
 func decrease_lives() -> void:
+	if lives == 0:
+		print("dead")
+		dead = true
+		return
 	lives -= 1
 	emit_signal("lives_changed")
 
 func increase_score() -> void:
 	score += 1
-	print(score)
 	emit_signal("score_changed")
