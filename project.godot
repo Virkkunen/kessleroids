@@ -12,9 +12,10 @@ config_version=5
 
 config/name="Kessleroids"
 config/description="An Asteroids-like with added Kessler Syndrome. Inspired by Attoparsec's idea."
-config/version="0.0.1"
+config/version="0.2.0"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0.133333, 0.137255, 0.137255, 1)
 config/icon="res://icon.svg"
 
 [autoload]

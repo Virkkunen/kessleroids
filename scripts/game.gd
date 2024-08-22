@@ -10,7 +10,8 @@ func _ready() -> void:
 	Global.connect("lives_changed", Callable(self, "_on_lives_changed"))
 	Global.connect("score_changed", Callable(self, "_on_score_changed"))
 	score_timer.connect("timeout", Callable(self, "_on_ScoreTimer_timeout"))
-	Global.lives = 3
+	Global.dead = false
+	Global.lives = 1
 	Global.score = 0
 	update_lives_label()
 	update_score_label()

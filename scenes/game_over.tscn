@@ -1,0 +1,125 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhyjm86dnlmle"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_r2sfu"]
+[ext_resource type="FontFile" uid="uid://bmcmfcanmluhh" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="2_slki8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1bjkv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ealr5"]
+bg_color = Color(0.133333, 0.137255, 0.137255, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.513726, 0.690196, 0.494118, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.133333, 0.137255, 0.137255, 0.196078)
+shadow_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rq26a"]
+bg_color = Color(0.513726, 0.690196, 0.494118, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.133333, 0.137255, 0.137255, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.133333, 0.137255, 0.137255, 0.196078)
+shadow_size = 16
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_r2sfu")
+
+[node name="GameOverLabel" type="Label" parent="."]
+z_index = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -173.0
+offset_top = 272.0
+offset_right = 173.0
+offset_bottom = 331.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_shadow_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("2_slki8")
+theme_override_font_sizes/font_size = 196
+text = "GAME OVER"
+
+[node name="ScoreLabel" type="Label" parent="."]
+z_index = 20
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.5
+offset_top = -43.5
+offset_right = 60.5
+offset_bottom = 43.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_shadow_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("2_slki8")
+theme_override_font_sizes/font_size = 96
+
+[node name="RestartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -185.0
+offset_top = -326.0
+offset_right = 187.0
+offset_bottom = -206.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_hover_pressed_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_hover_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_pressed_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_focus_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_fonts/font = ExtResource("2_slki8")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1bjkv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ealr5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rq26a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ealr5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ealr5")
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -172.0
+offset_right = 188.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_hover_pressed_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_hover_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_pressed_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_focus_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_fonts/font = ExtResource("2_slki8")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1bjkv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ealr5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rq26a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ealr5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ealr5")
+text = "Quit"
