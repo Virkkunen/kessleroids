@@ -5,6 +5,7 @@ var player_scene = preload("res://scenes/player.tscn")
 
 @onready var audio_death = $dead02
 @onready var score_timer = $ScoreTimer
+@onready var restart_hint = $RestartHint
 
 func _ready() -> void:
 	Global.connect("lives_changed", Callable(self, "_on_lives_changed"))
@@ -27,6 +28,7 @@ func _input(event: InputEvent) -> void:
 	#draw_rect(Rect2(Vector2(0, 0), Global.screen_size), Global.colour02, false, Global.border_thickness)
 
 func spawn_player() -> void:
+	restart_hint.visible = false
 	if is_instance_valid(player_instance):
 		player_instance.queue_free()
 	player_instance = player_scene.instantiate()
@@ -41,6 +43,7 @@ func get_hit() -> void:
 		player_instance.queue_free()
 		Global.decrease_lives()
 		score_timer.stop()
+		restart_hint.visible = true
 		
 func _on_lives_changed() -> void:
 	update_lives_label()
