@@ -1,10 +1,10 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 # setup
 @export var speed = 200
-@export var maxSpeed = 420
-@export var rotationSpeed = 3
-@export var brakeSpeed = 120
+@export var max_speed = 420
+@export var rotation_speed = 3
+@export var brake_speed = 120
 @export var shots = 5
 @export var boost_active = false
 @export var hit_detected = false # trying to prevent multiple collisions per frame
@@ -25,46 +25,52 @@ var Projectile = preload("res://scenes/projectile.tscn")
 func _ready() -> void:
 	update_ammo_counter()
 
-func _physics_process(delta: float) -> void:
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	hit_detected = false
 	### MOVEMENT
 	## rotate
 	if Input.is_action_pressed("rotate_left"):
-		rotation -= rotationSpeed * delta
+		#rotation -= rotationSpeed * delta
+		apply_torque_impulse(-rotation_speed * state.step)
 	elif Input.is_action_pressed("rotate_right"):
-		rotation += rotationSpeed * delta
+		#rotation += rotationSpeed * delta
+		apply_torque_impulse(rotation_speed * state.step)
+	else:
+		angular_velocity = 0.0
 		
 	# move
 	if Input.is_action_pressed("boost"):
 		set_boost_active(true)
-		velocity += Vector2(0, -speed).rotated(rotation) * delta
+		#velocity += Vector2(0, -speed).rotated(rotation) * delta
+		apply_central_impulse(Vector2(0, -speed).rotated(rotation) * state.step)
 		
 		if not audio_boost.playing:
 			audio_boost.play()
 		
-		if velocity.length() > maxSpeed:
-			velocity = velocity.normalized() * maxSpeed
+		if linear_velocity.length() > max_speed:
+			#velocity = velocity.normalized() * maxSpeed
+			linear_velocity = linear_velocity.normalized() * max_speed
 
 	elif Input.is_action_pressed("brake"):
 		if not audio_brake.playing:
 			audio_brake.play()
-		if velocity.length() > 0:
-			velocity = velocity.move_toward(Vector2.ZERO, brakeSpeed * delta)
+		if linear_velocity.length() > 0:
+			#velocity = velocity.move_toward(Vector2.ZERO, brakeSpeed * delta)
+			linear_velocity = linear_velocity.move_toward(Vector2.ZERO, brake_speed * state.step)
 	else:
 		set_boost_active(false)
 
 	# applyu movement
-	move_and_slide()
+	#move_and_slide()
 	# get collisions
-	for i in get_slide_collision_count():
-		var collision := get_slide_collision(i)
-		var body := collision.get_collider()
-		print("Player collided with: ", body)
-		if body.is_in_group("Asteroids") and not hit_detected:
+	for i in range(state.get_contact_count()):
+		var collision := state.get_contact_collider_object(i)
+		print("Player collided with: ", collision)
+		if collision.is_in_group("Asteroids") and not hit_detected:
 			hit_detected = true
-			Game.get_hit()
-			var impulse = collision.get_travel() * 100
-			utils.apply_impulse_to_body(body, impulse, rotation)
+			#Game.get_hit()
+			#var impulse = collision.get_travel() * 100
+			#utils.apply_impulse_to_body(body, impulse, rotation)
 	
 	# wrap around screen edges
 	position = utils.wrap_around(position)

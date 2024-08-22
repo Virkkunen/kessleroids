@@ -7,7 +7,9 @@ var screen_center = Vector2(Global.screen_size.x / 2, Global.screen_size.y / 2)
 #const min_distance_from_center = 100
 
 func _ready() -> void:
-	spawn_asteroids(randi() % 6 + 3, [])
+	#spawn_asteroids(randi() % 6 + 3, [])
+	spawn_asteroids(0, [])
+	
 	
 func spawn_asteroids(num_asteroids: int, positions: Array) -> void:
 	#var num_Asteroids = randi() % 6 + 3 # spawn from 3 to 5 asteroids on start
