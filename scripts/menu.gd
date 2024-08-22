@@ -31,20 +31,15 @@ func _on_help_button_pressed() -> void:
 	menu_layer.visible = false
 	credits_layer.visible = false
 	help_layer.visible = true
+	back_button.visible = true
 	utils.click_sound()
-	help_menu()
 	
 func _on_credits_button_pressed() -> void:
 	menu_layer.visible = false
-	help_layer.visible = true
+	help_layer.visible = false
+	credits_layer.visible = true
+	back_button.visible = true
 	utils.click_sound()
-	credits_menu()
-	
-func help_menu() -> void:
-	back_button.visible = true
-	
-func credits_menu() -> void:
-	back_button.visible = true
 
 func _on_back_button_pressed() -> void:
 	help_layer.visible = false
