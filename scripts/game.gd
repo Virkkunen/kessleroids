@@ -1,6 +1,6 @@
 extends Node2D
 
-var player_scene = preload("res://scenes/player.tscn")
+@export var player_scene = preload("res://scenes/player.tscn")
 @export var player_instance = null
 
 @onready var audio_death = $dead02

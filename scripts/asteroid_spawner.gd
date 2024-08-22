@@ -4,14 +4,14 @@ var Asteroid = preload("res://scenes/asteroid.tscn")
 @onready var utils : Node = load("res://scripts/utils.gd").new()
 
 var screen_center = Vector2(Global.screen_size.x / 2, Global.screen_size.y / 2)
-const min_distance_from_center = 100
+#const min_distance_from_center = 100
 
 func _ready() -> void:
-	spawn_asteroids()
+	spawn_asteroids(randi() % 6 + 3, [])
 	
-func spawn_asteroids() -> void:
-	var num_Asteroids = randi() % 6 + 3 # spawn from 3 to 5 asteroids on start
-	for i in range(num_Asteroids):
+func spawn_asteroids(num_asteroids: int, positions: Array) -> void:
+	#var num_Asteroids = randi() % 6 + 3 # spawn from 3 to 5 asteroids on start
+	for i in range(num_asteroids):
 		var asteroid_instance = Asteroid.instantiate()
 		
 		# randomise the size and rotation

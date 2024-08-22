@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
 # setup
-var speed = 200
-var maxSpeed = 420
-var rotationSpeed = 3
-var brakeSpeed = 120
-var shots = 5
-var boost_active = false
-var hit_detected = false # trying to prevent multiple collisions per frame
-var can_shoot = true # to prevent shot abuse
+@export var speed = 200
+@export var maxSpeed = 420
+@export var rotationSpeed = 3
+@export var brakeSpeed = 120
+@export var shots = 5
+@export var boost_active = false
+@export var hit_detected = false # trying to prevent multiple collisions per frame
+@export var can_shoot = true # to prevent shot abuse
 
 var Projectile = preload("res://scenes/projectile.tscn")
 

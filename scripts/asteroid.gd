@@ -3,18 +3,17 @@ extends RigidBody2D
 @onready var utils = load("res://scripts/utils.gd").new()
 @onready var collision_polygon: CollisionPolygon2D = $Hitbox
 
+@export var min_size = 12
+@export var max_size = 128
+
 func _ready():
 	add_to_group("Asteroids")
 	custom_integrator = true
-	print(linear_velocity)
-	#gravity_scale = 0.0
-	#linear_damp = 0.0
-	#angular_damp = 0.0
 	
 func _draw():
 	var points = []
 	var num_points = randi() % 5 + 5
-	var radius = randf_range(24, 128)
+	var radius = randf_range(min_size, max_size)
 
 	#var radius = 24
 	
@@ -30,20 +29,17 @@ func _draw():
 	
 	collision_polygon.polygon = points
 
-#func _physics_process(delta: float) -> void:
-	#angular_velocity = randf_range(0.1, 0.6)
-	#rotation += angular_velocity * delta
-	
-	# wrap around screen edges
-
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	# controlled on inspector
 	#gravity_scale = 0.0
-	gravity_scale = 0.0
-	linear_damp = 0.0
-	angular_damp = 0.0
+	#linear_damp = 0.0
+	#angular_damp = 0.0
 	position = utils.wrap_around(position)
 
 func _on_body_entered(body: Node) -> void:
 	print("Asteroid collided with: ", body)
 	if body.is_in_group("Asteroids"):
-		utils.apply_force_to_body(body, linear_velocity, rotation)
+		pass
+	elif body.is_in_group("Projectiles"):
+		print("here")
+	
