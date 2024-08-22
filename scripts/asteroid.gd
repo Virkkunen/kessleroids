@@ -3,8 +3,9 @@ extends RigidBody2D
 @onready var utils = load("res://scripts/utils.gd").new()
 @onready var collision_polygon: CollisionPolygon2D = $Hitbox
 
-@export var min_size = 12
+@export var min_size = 24
 @export var max_size = 128
+var radius = randf_range(min_size, max_size)
 
 func _ready():
 	add_to_group("Asteroids")
@@ -13,8 +14,6 @@ func _ready():
 func _draw():
 	var points = []
 	var num_points = randi() % 5 + 5
-	var radius = randf_range(min_size, max_size)
-
 	#var radius = 24
 	
 	for i in range(num_points):

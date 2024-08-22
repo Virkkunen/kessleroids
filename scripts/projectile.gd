@@ -30,14 +30,14 @@ func _on_body_entered(body: Node2D) -> void:
 	queue_free()
 
 func split_asteroid(asteroid: Node2D) -> void:
-	var max_size = asteroid.max_size
-	var min_size = asteroid.min_size
-	if max_size > min_size * 2:
-		for i in randi_range(3, 6):
+	var new_size = asteroid.radius / 2
+	if new_size >= 12:
+		var num_chunks = randi_range(3, 6)
+		for i in range(num_chunks):
 			var new_asteroid = preload("res://scenes/asteroid.tscn").instantiate()
-			new_asteroid.position = position
-			new_asteroid.max_size = max_size / 2
-			new_asteroid.min_size = min_size
-			new_asteroid.linear_velocity = asteroid.linear_velocity.rotated(randf_range(-PI / 4, PI / 4))
+			new_asteroid.position = asteroid.position
+			new_asteroid.max_size = new_size
+			new_asteroid.radius = randf_range(12, new_size)
+			new_asteroid.linear_velocity = asteroid.linear_velocity.rotated(randf_range(-PI / 2, PI / 2)) * 1.5
 			get_parent().add_child(new_asteroid)
 	asteroid.queue_free()
