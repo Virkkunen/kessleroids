@@ -1,14 +1,14 @@
 extends Node
 
 func wrap_around(position: Vector2) -> Vector2:
-	if position.x > Global.screen_size.x - Global.border_thickness:
-		position.x = Global.border_thickness
-	elif position.x < Global.border_thickness:
-		position.x = Global.screen_size.x - Global.border_thickness
-	if position.y > Global.screen_size.y - Global.border_thickness:
-		position.y = Global.border_thickness
-	elif position.y < Global.border_thickness:
-		position.y = Global.screen_size.y - Global.border_thickness
+	if position.x > Global.screen_size.x:
+		position.x = 0
+	elif position.x < 0:
+		position.x = Global.screen_size.x
+	if position.y > Global.screen_size.y:
+		position.y = 0
+	elif position.y < 0:
+		position.y = Global.screen_size.y
 	return position
 
 func detect_collision() -> void:

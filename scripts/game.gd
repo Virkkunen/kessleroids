@@ -14,8 +14,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
 	
-func _draw() -> void:
-	draw_rect(Rect2(Vector2(0, 0), Global.screen_size), Global.colour02, false, Global.border_thickness)
+#func _draw() -> void:
+	#draw_rect(Rect2(Vector2(0, 0), Global.screen_size), Global.colour02, false, Global.border_thickness)
 
 func spawn_player() -> void:
 	if is_instance_valid(player_instance):
