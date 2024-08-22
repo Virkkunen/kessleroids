@@ -17,7 +17,7 @@ func spawn_asteroids() -> void:
 		# randomise the size and rotation
 		var scale_factor = randf_range(0.5, 8)
 		var starting_rotation = randf_range(0, 2 * PI)
-		var starting_impulse = Vector2(randf_range(0, 250), randf_range(0, 250))
+		var starting_impulse = Vector2(randf_range(-250, 250), randf_range(-250, 250))
 		
 		# randomise starting position
 		asteroid_instance.position = Vector2(randf_range(0, Global.screen_size.x), randf_range(0, Global.screen_size.y))
