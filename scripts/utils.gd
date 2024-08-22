@@ -13,3 +13,10 @@ func wrap_around(position: Vector2) -> Vector2:
 
 func detect_collision() -> void:
 	pass
+
+func click_sound() -> void:
+	var audio_player = AudioStreamPlayer.new()
+	audio_player.stream = load("res://assets/sfx/click.wav")
+	add_child(audio_player)
+	audio_player.play()
+	audio_player.connect("finished", Callable(audio_player, "queue_free"))

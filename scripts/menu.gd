@@ -9,6 +9,7 @@ extends Control
 @onready var menu_layer = $MenuLayer
 @onready var help_layer = $HelpLayer
 @onready var credits_layer = $CreditsLayer
+@onready var utils = preload("res://scripts/utils.gd").new()
 
 const game_scene = "res://scenes/game.tscn"
 
@@ -30,11 +31,13 @@ func _on_help_button_pressed() -> void:
 	menu_layer.visible = false
 	credits_layer.visible = false
 	help_layer.visible = true
+	utils.click_sound()
 	help_menu()
 	
 func _on_credits_button_pressed() -> void:
 	menu_layer.visible = false
 	help_layer.visible = true
+	utils.click_sound()
 	credits_menu()
 	
 func help_menu() -> void:
@@ -48,7 +51,9 @@ func _on_back_button_pressed() -> void:
 	credits_layer.visible = false
 	back_button.visible = false
 	menu_layer.visible = true
+	utils.click_sound()
 	
 func _on_play_button_pressed() -> void:
+	utils.click_sound()
 	get_tree().change_scene_to_file(game_scene)
 	
