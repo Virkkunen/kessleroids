@@ -19,7 +19,11 @@ var Projectile = preload("res://scenes/projectile.tscn")
 @onready var audio_boost : AudioStreamPlayer2D = $boost
 @onready var audio_brake : AudioStreamPlayer2D = $brake
 @onready var audio_shot : AudioStreamPlayer2D = $shot
-@onready var collision_polygon: CollisionPolygon2D = $Hitbox
+@onready var collision_polygon : CollisionPolygon2D = $Hitbox
+@onready var ammo_label : Label = $"/root/Game/MarginAmmo/AmmoLabel"
+
+func _ready() -> void:
+	update_ammo_counter()
 
 func _physics_process(delta: float) -> void:
 	hit_detected = false
@@ -101,12 +105,23 @@ func shoot() -> void:
 		proj.rotation = rotation
 		audio_shot.play()
 		shots -= 1
-	else:
+		update_ammo_counter()
+	if shots == 0 and can_shoot:
 		can_shoot = false
-		await get_tree().create_timer(2.0).timeout
-		shots = 5
-		can_shoot = true
+		reload()
 
+func reload() -> void:
+	await get_tree().create_timer(2.0).timeout
+	shots = 5
+	update_ammo_counter()
+	can_shoot = true
+	
 func set_boost_active(active: bool) -> void:
 	boost_active = active
 	queue_redraw()
+
+func update_ammo_counter() -> void:
+	if shots == 0:
+		ammo_label.text = "Ammo: reloading"
+	else:
+		ammo_label.text = "Ammo: %d" % shots

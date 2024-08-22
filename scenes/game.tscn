@@ -80,3 +80,25 @@ vertical_alignment = 1
 
 [node name="respawn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_gopph")
+
+[node name="MarginAmmo" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 1044.0
+offset_right = 112.0
+offset_bottom = 1080.0
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_bottom = 6
+
+[node name="AmmoLabel" type="Label" parent="MarginAmmo"]
+z_index = 10
+layout_mode = 2
+theme_override_colors/font_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_shadow_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_outline_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("4_soj0h")
+theme_override_font_sizes/font_size = 32
+text = "Ammo:"
