@@ -20,4 +20,5 @@ func decrease_lives() -> void:
 
 func increase_score() -> void:
 	score += 1
+	print(score)
 	emit_signal("score_changed")
