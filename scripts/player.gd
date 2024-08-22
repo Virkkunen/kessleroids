@@ -101,7 +101,7 @@ func shoot() -> void:
 	if shots > 0:
 		var proj = Projectile.instantiate()
 		get_parent().add_child(proj)
-		proj.transform = $Muzzle.global_transform
+		proj.position = $Muzzle.global_position
 		proj.rotation = rotation
 		audio_shot.play()
 		shots -= 1
