@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4rpgyaji7mab"]
+[gd_scene load_steps=3 format=3 uid="uid://b4rpgyaji7mab"]
 
 [ext_resource type="Script" path="res://scripts/asteroid.gd" id="1_wup3o"]
+[ext_resource type="AudioStream" uid="uid://ba785x7jy30im" path="res://assets/sfx/asteroid_break.wav" id="2_dhc4y"]
 
-[node name="Asteroid" type="CharacterBody2D"]
+[node name="Asteroid" type="RigidBody2D"]
 collision_mask = 7
 script = ExtResource("1_wup3o")
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
+
+[node name="asteroid_break" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_dhc4y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

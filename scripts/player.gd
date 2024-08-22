@@ -24,7 +24,7 @@ var Projectile = preload("res://scenes/projectile.tscn")
 func _physics_process(delta: float) -> void:
 	hit_detected = false
 	### MOVEMENT
-	# rotate
+	## rotate
 	if Input.is_action_pressed("rotate_left"):
 		rotation -= rotationSpeed * delta
 	elif Input.is_action_pressed("rotate_right"):
@@ -55,10 +55,12 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
 		var body := collision.get_collider()
-		print("Collided with: ", body)
+		print("Player collided with: ", body)
 		if body.is_in_group("Asteroids") and not hit_detected:
 			hit_detected = true
 			Game.get_hit()
+			var impulse = collision.get_travel() * 100
+			utils.apply_impulse_to_body(body, impulse, rotation)
 	
 	# wrap around screen edges
 	position = utils.wrap_around(position)
