@@ -5,6 +5,7 @@ extends Area2D
 
 @onready var collision_polygon: CollisionPolygon2D = $Hitbox
 @onready var utils = load("res://scripts/utils.gd").new()
+@onready var audio_asteroid_break = $asteroid_break
 
 func _ready() -> void:
 	add_to_group("Projectiles")
@@ -40,4 +41,4 @@ func split_asteroid(asteroid: Node2D) -> void:
 			new_asteroid.radius = randf_range(12, new_size)
 			new_asteroid.linear_velocity = asteroid.linear_velocity.rotated(randf_range(-PI / 2, PI / 2)) * 1.5
 			get_parent().add_child(new_asteroid)
-	asteroid.queue_free()
+	asteroid.remove_asteroid()

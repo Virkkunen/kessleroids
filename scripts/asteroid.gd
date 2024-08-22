@@ -2,6 +2,7 @@ extends RigidBody2D
 
 @onready var utils = load("res://scripts/utils.gd").new()
 @onready var collision_polygon: CollisionPolygon2D = $Hitbox
+@onready var audio_asteroid_break: AudioStreamPlayer = $asteroid_break
 
 @export var min_size = 24
 @export var max_size = 128
@@ -34,11 +35,19 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	#linear_damp = 0.0
 	#angular_damp = 0.0
 	position = utils.wrap_around(position)
+#
+#func _on_body_entered(body: Node) -> void:
+	#print("Asteroid collided with: ", body)
+	#if body.is_in_group("Asteroids"):
+		#pass
+	#elif body.is_in_group("Projectiles"):
+		#print("here")
+	#
 
-func _on_body_entered(body: Node) -> void:
-	print("Asteroid collided with: ", body)
-	if body.is_in_group("Asteroids"):
-		pass
-	elif body.is_in_group("Projectiles"):
-		print("here")
-	
+func remove_asteroid() -> void:
+	freeze = true
+	collision_polygon.disabled = true
+	visible = false
+	audio_asteroid_break.finished.connect(queue_free)
+	audio_asteroid_break.play()
+	print("test")

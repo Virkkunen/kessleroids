@@ -10,5 +10,5 @@ script = ExtResource("1_wup3o")
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 
-[node name="asteroid_break" type="AudioStreamPlayer2D" parent="."]
+[node name="asteroid_break" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_dhc4y")
