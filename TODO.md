@@ -3,7 +3,7 @@
 - [ ] fix asteroid collision velocity/rotation
 - [x] update ship's collision to use vector points
 - [x] add scoreboard (seconds alive)
-- [ ] add title screen
+- [x] add title screen
 	- play, controls, scoreboard, exit
 - [x] add health system
 	- 3 lives, stop score when dead
