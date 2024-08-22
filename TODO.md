@@ -4,3 +4,4 @@
 - [ ] have projectiles damage ship
 - [x] asteroids break into smaller ones with random velocities, rotation and direction
 - [ ] add breaking effects
+- [ ] fix button sounds

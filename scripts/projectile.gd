@@ -5,7 +5,6 @@ extends Area2D
 
 @onready var collision_polygon: CollisionPolygon2D = $Hitbox
 @onready var utils = load("res://scripts/utils.gd").new()
-@onready var audio_asteroid_break = $asteroid_break
 
 func _ready() -> void:
 	add_to_group("Projectiles")
