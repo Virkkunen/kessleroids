@@ -4,8 +4,7 @@ extends CanvasLayer
 @onready var restart_button = $RestartButton
 @onready var quit_button = $QuitButton
 
-@onready var score_label_screen = $"/root/Game/MarginScore/ScoreLabel"
-@onready var lives_label_screen = $"/root/Game/MarginLives/LivesLabel"
+@onready var hud = $/root/Game/HUD
 
 func _ready() -> void:
 	restart_button.pressed.connect(_on_restart_button_pressed)
@@ -13,8 +12,7 @@ func _ready() -> void:
 
 func show_game_over_screen() -> void:
 	score_label.text = "Score: " + str(Global.score)
-	lives_label_screen.visible = false
-	score_label_screen.visible = false
+	hud.visible = false
 	visible = true
 	
 func _on_restart_button_pressed() -> void:

@@ -20,7 +20,7 @@ var Projectile = preload("res://scenes/projectile.tscn")
 @onready var audio_brake : AudioStreamPlayer2D = $brake
 @onready var audio_shot : AudioStreamPlayer2D = $shot
 @onready var collision_polygon : CollisionPolygon2D = $Hitbox
-@onready var ammo_label : Label = $"/root/Game/MarginAmmo/AmmoLabel"
+@onready var ammo_label : Label = $"/root/Game/HUD/MarginAmmo/AmmoLabel"
 
 func _ready() -> void:
 	update_ammo_counter()

@@ -55,9 +55,9 @@ func _on_ScoreTimer_timeout() -> void:
 	Global.increase_score()
 
 func update_lives_label() -> void:
-	var lives_label = $"MarginLives/LivesLabel"
+	var lives_label = $"HUD/MarginLives/LivesLabel"
 	lives_label.text = "Lives: " + str(Global.lives)
 	
 func update_score_label() -> void:
-	var score_label = $MarginScore/ScoreLabel
+	var score_label = $HUD/MarginScore/ScoreLabel
 	score_label.text = "Score: " + str(Global.score)
