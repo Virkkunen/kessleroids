@@ -1,7 +1,6 @@
-- [ ] fix asteroid collision velocity/rotation
-- [ ] have projectiles break asteroids
+- [x] fix asteroid collision velocity/rotation
+	- still needs better physics but that's beyong my capabilities
+- [x] have projectiles break asteroids
 - [ ] have projectiles damage ship
-- [ ] asteroids break into smaller ones with random velocities, rotation and direction
+- [x] asteroids break into smaller ones with random velocities, rotation and direction
 - [ ] add breaking effects
-- [x] add limited shots
-	- shoot 5, can't shoot again until they all despawn

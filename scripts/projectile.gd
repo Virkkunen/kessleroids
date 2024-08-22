@@ -39,7 +39,7 @@ func split_asteroid(asteroid: Node2D) -> void:
 			new_asteroid.position = asteroid.position
 			new_asteroid.max_size = new_size
 			new_asteroid.radius = randf_range(12, new_size)
-			var new_impulse = asteroid.linear_velocity.rotated(randf_range(0, 2 * PI)) * 3
+			var new_impulse = asteroid.linear_velocity.rotated(randf_range(0, 2 * PI)) * 4
 			var new_rotation = randf_range(0, 2 * PI)
 			#new_asteroid.angular_velocity = asteroid.angular_velocity * 2
 			get_parent().add_child(new_asteroid)
