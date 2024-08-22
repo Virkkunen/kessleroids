@@ -5,8 +5,10 @@ var speed = 200
 var maxSpeed = 420
 var rotationSpeed = 3
 var brakeSpeed = 120
+var shots = 5
 var boost_active = false
 var hit_detected = false # trying to prevent multiple collisions per frame
+var can_shoot = true # to prevent shot abuse
 
 var Projectile = preload("res://scenes/projectile.tscn")
 
@@ -62,7 +64,7 @@ func _physics_process(delta: float) -> void:
 	position = utils.wrap_around(position)
 		
 	# SHOOTING
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and can_shoot:
 		shoot()
 		
 func _draw() -> void:
@@ -90,12 +92,19 @@ func _draw() -> void:
 		draw_polygon(boost_flame_l, [Global.colour02])
 	
 func shoot() -> void:
-	var proj = Projectile.instantiate()
-	proj.global_position = $Muzzle.global_position
-	proj.rotation = rotation
-	get_parent().add_child(proj)
-	if not audio_shot.playing:
+	print(shots)
+	if shots > 0:
+		var proj = Projectile.instantiate()
+		proj.global_position = $Muzzle.global_position
+		proj.rotation = rotation
+		get_parent().add_child(proj)
 		audio_shot.play()
+		shots -= 1
+	else:
+		can_shoot = false
+		await get_tree().create_timer(2.0).timeout
+		shots = 5
+		can_shoot = true
 
 func set_boost_active(active: bool) -> void:
 	boost_active = active
