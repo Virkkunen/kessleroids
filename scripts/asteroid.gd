@@ -45,9 +45,11 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	#
 
 func remove_asteroid() -> void:
-	freeze = true
-	collision_polygon.disabled = true
+	collision_polygon.queue_free()
+	freeze = true # apparently does jack shit
+	linear_velocity = Vector2(0.0, 0.0)
+	angular_velocity = 0.0
+	collision_polygon.disabled = true # apparently also does jack shit
 	visible = false
 	audio_asteroid_break.finished.connect(queue_free)
 	audio_asteroid_break.play()
-	print("test")

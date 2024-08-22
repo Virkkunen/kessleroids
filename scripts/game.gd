@@ -6,14 +6,17 @@ extends Node2D
 @onready var audio_death = $dead02
 @onready var audio_respawn = $respawn
 @onready var score_timer = $ScoreTimer
+@onready var asteroid_timer = $AsteroidTimer
 @onready var restart_hint = $RestartHint
+@onready var asteroid_spawner = $AsteroidSpawner
 
 func _ready() -> void:
 	Global.lives_changed.connect(_on_lives_changed)
 	Global.score_changed.connect(_on_score_changed)
 	score_timer.timeout.connect(_on_ScoreTimer_timeout)
+	asteroid_timer.timeout.connect(_on_AsteroidTimer_timeout)
 	Global.dead = false
-	Global.lives = 1
+	Global.lives = 3
 	Global.score = 0
 	update_lives_label()
 	update_score_label()
@@ -35,6 +38,7 @@ func spawn_player() -> void:
 	add_child(player_instance)
 	player_instance.position = Global.screen_size / 2
 	score_timer.start()
+	asteroid_timer.start()
 
 func get_hit() -> void:
 	if is_instance_valid(player_instance):
@@ -53,7 +57,10 @@ func _on_score_changed() -> void:
 
 func _on_ScoreTimer_timeout() -> void:
 	Global.increase_score()
-
+	
+func _on_AsteroidTimer_timeout() -> void:
+	asteroid_spawner.spawn_asteroids(randi_range(1, 3))
+	
 func update_lives_label() -> void:
 	var lives_label = $"HUD/MarginLives/LivesLabel"
 	lives_label.text = "Lives: " + str(Global.lives)
