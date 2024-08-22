@@ -9,9 +9,9 @@ var player_scene = preload("res://scenes/player.tscn")
 @onready var restart_hint = $RestartHint
 
 func _ready() -> void:
-	Global.connect("lives_changed", Callable(self, "_on_lives_changed"))
-	Global.connect("score_changed", Callable(self, "_on_score_changed"))
-	score_timer.connect("timeout", Callable(self, "_on_ScoreTimer_timeout"))
+	Global.lives_changed.connect(_on_lives_changed)
+	Global.score_changed.connect(_on_score_changed)
+	score_timer.timeout.connect(_on_ScoreTimer_timeout)
 	Global.dead = false
 	Global.lives = 1
 	Global.score = 0
@@ -23,11 +23,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("respawn") and not is_instance_valid(player_instance) and not Global.dead:
 		spawn_player()
 	if event.is_action_pressed("quit"):
-		#get_tree().quit()
 		get_tree().change_scene_to_file("res://scenes/menu.tscn")
-	
-#func _draw() -> void:
-	#draw_rect(Rect2(Vector2(0, 0), Global.screen_size), Global.colour02, false, Global.border_thickness)
 
 func spawn_player() -> void:
 	if not audio_respawn.playing:

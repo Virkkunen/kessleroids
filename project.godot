@@ -81,8 +81,8 @@ quit={
 
 [layer_names]
 
-2d_physics/layer_1="player"
-2d_physics/layer_2="asteroids"
+2d_physics/layer_1="asteroids"
+2d_physics/layer_2="player"
 2d_physics/layer_3="projectiles"
 
 [rendering]

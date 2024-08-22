@@ -92,12 +92,11 @@ func _draw() -> void:
 		draw_polygon(boost_flame_l, [Global.colour02])
 	
 func shoot() -> void:
-	print(shots)
 	if shots > 0:
 		var proj = Projectile.instantiate()
-		proj.global_position = $Muzzle.global_position
-		proj.rotation = rotation
 		get_parent().add_child(proj)
+		proj.transform = $Muzzle.global_transform
+		proj.rotation = rotation
 		audio_shot.play()
 		shots -= 1
 	else:

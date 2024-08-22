@@ -1,21 +1,25 @@
 extends Area2D
 
 var speed = 600
-var lifetime = 5
+#var lifetime = 5
 
 @onready var collision_polygon: CollisionPolygon2D = $Hitbox
 @onready var utils = load("res://scripts/utils.gd").new()
 
-func _ready() -> void:
+#func _ready() -> void:
 	# to delete the projectile after its lifetime
-	await get_tree().create_timer(lifetime).timeout
-	queue_free()
+	#await get_tree().create_timer(lifetime).timeout
+	#queue_free()
 	
 func _physics_process(delta: float) -> void:
 	position += Vector2(0, -speed * delta).rotated(rotation)
-	
 	position = utils.wrap_around(position)
 	
+func _on_Projectile_body_entered(body) -> void:
+	print(body)
+	if body.is_in_group("Asteroids"):
+		body.queue_free()
+	queue_free()
 	
 func _draw() -> void:
 	var points = [

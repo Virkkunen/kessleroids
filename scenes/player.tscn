@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://brwiyte48qc8q" path="res://assets/sfx/shot.wav" id="7_fvtse"]
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_50s3g")
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]

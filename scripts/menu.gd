@@ -18,11 +18,17 @@ func _ready() -> void:
 	credits_layer.visible = false
 	back_button.visible = false
 	menu_layer.visible = true
-	play_button.connect("pressed", Callable(self, "_on_play_button_pressed"))
-	help_button.connect("pressed", Callable(self, "_on_help_button_pressed"))
-	credits_button.connect("pressed", Callable(self, "_on_credits_button_pressed"))
-	quit_button.connect("pressed", Callable(self, "_on_quit_button_pressed"))
-	back_button.connect("pressed", Callable(self, "_on_back_button_pressed"))
+	#play_button.connect("pressed", Callable(self, "_on_play_button_pressed"))
+	#help_button.connect("pressed", Callable(self, "_on_help_button_pressed"))
+	#credits_button.connect("pressed", Callable(self, "_on_credits_button_pressed"))
+	#quit_button.connect("pressed", Callable(self, "_on_quit_button_pressed"))
+	#back_button.connect("pressed", Callable(self, "_on_back_button_pressed"))
+	# let's use the godot 4 method
+	play_button.pressed.connect(_on_play_button_pressed)
+	help_button.pressed.connect(_on_help_button_pressed)
+	credits_button.pressed.connect(_on_credits_button_pressed)
+	quit_button.pressed.connect(_on_quit_button_pressed)
+	back_button.pressed.connect(_on_back_button_pressed)
 	
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

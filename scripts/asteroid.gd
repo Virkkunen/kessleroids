@@ -6,9 +6,9 @@ var angular_velocity = 0.2
 @onready var collision_polygon: CollisionPolygon2D = $Hitbox
 
 func _ready():
-	collision_polygon = CollisionPolygon2D.new()
-	add_child(collision_polygon)
-	queue_redraw()
+	#collision_polygon = CollisionPolygon2D.new()
+	#add_child(collision_polygon)
+	#queue_redraw()
 	add_to_group("Asteroids")
 	
 func _draw():

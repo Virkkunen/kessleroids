@@ -8,8 +8,8 @@ extends CanvasLayer
 @onready var lives_label_screen = $"/root/Game/MarginLives/LivesLabel"
 
 func _ready() -> void:
-	restart_button.connect("pressed", Callable(self, "_on_restart_button_pressed"))
-	quit_button.connect("pressed", Callable(self, "_on_quit_button_pressed"))
+	restart_button.pressed.connect(_on_restart_button_pressed)
+	quit_button.pressed.connect(_on_quit_button_pressed)
 
 func show_game_over_screen() -> void:
 	score_label.text = "Score: " + str(Global.score)

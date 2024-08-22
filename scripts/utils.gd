@@ -19,4 +19,4 @@ func click_sound() -> void:
 	audio_player.stream = load("res://assets/sfx/click.wav")
 	add_child(audio_player)
 	audio_player.play()
-	audio_player.connect("finished", Callable(audio_player, "queue_free"))
+	audio_player.finished.connect(queue_free)
