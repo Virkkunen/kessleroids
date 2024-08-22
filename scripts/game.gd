@@ -3,12 +3,13 @@ extends Node2D
 var player_scene = preload("res://scenes/player.tscn")
 @export var player_instance = null
 
+@onready var audio_death = $dead02
 
 func _ready() -> void:
 	spawn_player()
 	
 func _input(event: InputEvent) -> void:
-	if Global.lives > 0 and event.is_action_pressed("respawn"):
+	if event.is_action_pressed("respawn"):
 		spawn_player()
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
@@ -23,10 +24,9 @@ func spawn_player() -> void:
 	add_child(player_instance)
 	player_instance.position = Global.screen_size / 2
 
-func death() -> void:
+func get_hit() -> void:
 	if is_instance_valid(player_instance):
+		if not audio_death.playing:
+			audio_death.play()
 		player_instance.queue_free()
 		Global.lives -= 1
-		print("Lives: ", Global.lives)
-		#if not audio_dead02.playing:
-			#audio_dead02.play()

@@ -13,8 +13,6 @@ var player_scene = preload("res://scenes/player.tscn")
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
-
-
 			
 func update_lives() -> void:
 	pass

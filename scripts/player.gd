@@ -9,14 +9,13 @@ var boost_active = false
 
 var Projectile = preload("res://scenes/projectile.tscn")
 
-@onready var game = $"/root/Game"
+@onready var Game : Node2D = $"/root/Game"
 
-@onready var utils = load("res://scripts/utils.gd").new()
-@onready var ship_vector : Node2D = $ShipVector
+@onready var utils : Node = load("res://scripts/utils.gd").new()
 
-@onready var audio_boost = $boost
-@onready var audio_brake = $brake
-@onready var audio_shot = $shot
+@onready var audio_boost : AudioStreamPlayer2D = $boost
+@onready var audio_brake : AudioStreamPlayer2D = $brake
+@onready var audio_shot : AudioStreamPlayer2D = $shot
 
 func _physics_process(delta: float) -> void:
 	### MOVEMENT
@@ -53,10 +52,11 @@ func _physics_process(delta: float) -> void:
 		var body := collision.get_collider()
 		print("Collided with: ", body)
 		if body.is_in_group("Asteroids"):
-			body.velocity = Vector2(0, -speed).rotated(rotation) * 0.25
-			body.angular_velocity = velocity.length() * 0.08
-			print("Velocity: ", body.velocity.length())
-			print("Angular Velocity: ", body.angular_velocity)
+			Game.get_hit()
+			#body.velocity = Vector2(0, -speed).rotated(rotation) * 0.25
+			#body.angular_velocity = velocity.length() * 0.08
+			#print("Velocity: ", body.velocity.length())
+			#print("Angular Velocity: ", body.angular_velocity)
 	
 	# wrap around screen edges
 	position = utils.wrap_around(position)
@@ -95,12 +95,6 @@ func shoot() -> void:
 	get_parent().add_child(proj)
 	if not audio_shot.playing:
 		audio_shot.play()
-
-func get_hit() -> void:
-	if is_instance_valid(Global.player_instance):
-		game.player_instance.queue_free()
-		Global.lives -= 1
-
 
 func set_boost_active(active: bool) -> void:
 	boost_active = active
