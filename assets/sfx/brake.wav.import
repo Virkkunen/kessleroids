@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://c6e4uf57pdcv7"
-path="res://.godot/imported/dead01.wav-5d393e8baf5d1622cb8bda2f200639d6.sample"
+uid="uid://btkoe3n0f6jog"
+path="res://.godot/imported/brake.wav-dbfb60492fe6c5d55ab3a8b5007fe933.sample"
 
 [deps]
 
-source_file="res://assets/dead01.wav"
-dest_files=["res://.godot/imported/dead01.wav-5d393e8baf5d1622cb8bda2f200639d6.sample"]
+source_file="res://assets/sfx/brake.wav"
+dest_files=["res://.godot/imported/brake.wav-dbfb60492fe6c5d55ab3a8b5007fe933.sample"]
 
 [params]
 

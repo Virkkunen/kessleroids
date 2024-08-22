@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dofilwdrocx75"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_50s3g"]
-[ext_resource type="AudioStream" uid="uid://70d3uamhtta4" path="res://assets/boost.wav" id="3_rn5k5"]
-[ext_resource type="AudioStream" uid="uid://btkoe3n0f6jog" path="res://assets/brake.wav" id="6_1mi2r"]
-[ext_resource type="AudioStream" uid="uid://brwiyte48qc8q" path="res://assets/shot.wav" id="7_fvtse"]
+[ext_resource type="AudioStream" uid="uid://70d3uamhtta4" path="res://assets/sfx/boost.wav" id="2_3wck8"]
+[ext_resource type="AudioStream" uid="uid://btkoe3n0f6jog" path="res://assets/sfx/brake.wav" id="3_cvvuo"]
+[ext_resource type="AudioStream" uid="uid://brwiyte48qc8q" path="res://assets/sfx/shot.wav" id="7_fvtse"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_50s3g")
@@ -16,10 +16,10 @@ polygon = PackedVector2Array(-8, 0, 0, -16, 8, 0, 0, 4)
 position = Vector2(0, -9)
 
 [node name="boost" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_rn5k5")
+stream = ExtResource("2_3wck8")
 
 [node name="brake" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_1mi2r")
+stream = ExtResource("3_cvvuo")
 
 [node name="shot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_fvtse")

@@ -7,6 +7,12 @@ var player_scene = preload("res://scenes/player.tscn")
 
 func _ready() -> void:
 	spawn_player()
+	Global.connect("lives_changed", Callable(self, "_on_lives_changed"))
+	Global.connect("score_changed", Callable(self, "_on_score_changed"))
+	Global.lives = 3
+	Global.score = 0
+	update_lives_label()
+	update_score_label()
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("respawn"):
@@ -29,4 +35,19 @@ func get_hit() -> void:
 		if not audio_death.playing:
 			audio_death.play()
 		player_instance.queue_free()
-		Global.lives -= 1
+		Global.decrease_lives()
+		
+func _on_lives_changed() -> void:
+	update_lives_label()
+	
+func _on_score_changed() -> void:
+	update_score_label()
+
+
+func update_lives_label() -> void:
+	var lives_label = $"MarginLives/LivesLabel"
+	lives_label.text = "Lives: " + str(Global.lives)
+	
+func update_score_label() -> void:
+	var score_label = $MarginScore/ScoreLabel
+	score_label.text = "Score: " + str(Global.score)

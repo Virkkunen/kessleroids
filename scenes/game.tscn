@@ -1,18 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://oovh3h1u12la"]
+[gd_scene load_steps=5 format=3 uid="uid://oovh3h1u12la"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_cr04j"]
-[ext_resource type="AudioStream" uid="uid://cw0cumtv1mw10" path="res://assets/dead02.wav" id="2_6padu"]
 [ext_resource type="Script" path="res://scripts/asteroid_spawner.gd" id="2_8fuuv"]
+[ext_resource type="AudioStream" uid="uid://cw0cumtv1mw10" path="res://assets/sfx/dead02.wav" id="3_ofnlq"]
+[ext_resource type="FontFile" uid="uid://bmcmfcanmluhh" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="4_soj0h"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_cr04j")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(958, 540)
 
 [node name="AsteroidSpawner" type="Node2D" parent="."]
 script = ExtResource("2_8fuuv")
 
 [node name="dead02" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_6padu")
+stream = ExtResource("3_ofnlq")
 
-[node name="LivesLabel" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="MarginLives" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1902.0
+offset_right = 1919.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 16
+
+[node name="LivesLabel" type="Label" parent="MarginLives"]
+z_index = 10
+layout_mode = 2
+theme_override_colors/font_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_shadow_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_outline_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("4_soj0h")
+theme_override_font_sizes/font_size = 32
+
+[node name="MarginScore" type="MarginContainer" parent="."]
+offset_right = 77.0
+offset_bottom = 36.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 6
+
+[node name="ScoreLabel" type="Label" parent="MarginScore"]
+z_index = 10
+layout_mode = 2
+theme_override_colors/font_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_shadow_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_outline_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("4_soj0h")
+theme_override_font_sizes/font_size = 32
