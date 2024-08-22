@@ -1,7 +1,7 @@
 - [ ] fix asteroids going over border
 - [ ] fix ship and projectiles wrapping around before border
 - [ ] fix asteroid collision velocity/rotation
-- [ ] update ship's collision to use vector points
+- [x] update ship's collision to use vector points
 - [x] add scoreboard (seconds alive)
 - [ ] add title screen
 	- play, controls, scoreboard, exit

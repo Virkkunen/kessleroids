@@ -30,8 +30,8 @@ func increase_score() -> void:
 	emit_signal("score_changed")
 
 func show_game_over() -> void:
-	if game_over_instance:
-		game_over_instance.queue_free()
+	#if game_over_instance:
+		#game_over_instance.queue_free()
 	var game_over_instance = game_over_scene.instantiate()
 	add_child(game_over_instance)
 	game_over_instance.show_game_over_screen()

@@ -1,0 +1,271 @@
+[gd_scene load_steps=7 format=3 uid="uid://1km54d6fl37j"]
+
+[ext_resource type="FontFile" uid="uid://bmcmfcanmluhh" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="1_i8w35"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_m2tgh"]
+[ext_resource type="FontFile" uid="uid://b2jwhhtvq7jeo" path="res://assets/fonts/HomeVideoBold-R90Dv.ttf" id="3_mmji4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lqr4a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srkhb"]
+bg_color = Color(0.133333, 0.137255, 0.137255, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.513726, 0.690196, 0.494118, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.133333, 0.137255, 0.137255, 0.196078)
+shadow_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0uu4"]
+bg_color = Color(0.513726, 0.690196, 0.494118, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.133333, 0.137255, 0.137255, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.133333, 0.137255, 0.137255, 0.196078)
+shadow_size = 16
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m2tgh")
+
+[node name="MenuLayer" type="CanvasGroup" parent="."]
+
+[node name="PlayButton" type="Button" parent="MenuLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 774.0
+offset_top = 480.0
+offset_right = 1146.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_pressed_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_hover_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_pressed_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_focus_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_fonts/font = ExtResource("1_i8w35")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lqr4a")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_srkhb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w0uu4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_srkhb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_srkhb")
+text = "Play"
+
+[node name="HelpButton" type="Button" parent="MenuLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 774.0
+offset_top = 628.0
+offset_right = 1146.0
+offset_bottom = 748.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_hover_pressed_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_hover_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_pressed_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_focus_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_fonts/font = ExtResource("1_i8w35")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lqr4a")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_srkhb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w0uu4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_srkhb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_srkhb")
+text = "Controls"
+
+[node name="CreditsButton" type="Button" parent="MenuLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 774.0
+offset_top = 776.0
+offset_right = 1146.0
+offset_bottom = 896.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_hover_pressed_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_hover_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_pressed_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_focus_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_fonts/font = ExtResource("1_i8w35")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lqr4a")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_srkhb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w0uu4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_srkhb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_srkhb")
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="MenuLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 774.0
+offset_top = 924.0
+offset_right = 1146.0
+offset_bottom = 1044.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_hover_pressed_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_hover_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_pressed_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_focus_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_fonts/font = ExtResource("1_i8w35")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lqr4a")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_srkhb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w0uu4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_srkhb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_srkhb")
+text = "Quit"
+
+[node name="HelpLayer" type="CanvasGroup" parent="."]
+visible = false
+z_index = 20
+
+[node name="Controls" type="RichTextLabel" parent="HelpLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 464.0
+offset_right = 1920.0
+offset_bottom = 911.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_shadow_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/normal_font = ExtResource("1_i8w35")
+theme_override_fonts/bold_font = ExtResource("3_mmji4")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
+bbcode_enabled = true
+text = "[center]
+[b]WASD/Arrow keys[/b]
+move
+
+[b]Space[/b]
+shoot
+
+[b]R[/b]
+respawn
+
+[b]ESC[/b]
+menu
+[/center]"
+
+[node name="CreditsLayer" type="CanvasGroup" parent="."]
+visible = false
+
+[node name="Credits" type="RichTextLabel" parent="CreditsLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 464.0
+offset_right = 1920.0
+offset_bottom = 911.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_shadow_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/normal_font = ExtResource("1_i8w35")
+theme_override_fonts/bold_font = ExtResource("3_mmji4")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
+bbcode_enabled = true
+text = "[center]
+[b]Virkkunen[/b]
+code, sfx, vectors
+
+[b]GGBotNet[/b]
+home video font
+
+[b]attoparsec[/b]
+original idea & execution
+[/center]"
+
+[node name="BackButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -186.0
+offset_top = -156.0
+offset_right = 186.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_hover_pressed_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_hover_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_pressed_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_focus_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_fonts/font = ExtResource("1_i8w35")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lqr4a")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_srkhb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w0uu4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_srkhb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_srkhb")
+text = "Back"
+
+[node name="Title" type="Label" parent="."]
+z_index = 20
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -647.0
+offset_top = -336.5
+offset_right = 647.0
+offset_bottom = -159.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_shadow_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("1_i8w35")
+theme_override_font_sizes/font_size = 196
+text = "Kessleroids"
+horizontal_alignment = 1
+vertical_alignment = 1
