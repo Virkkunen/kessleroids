@@ -24,7 +24,7 @@ func _draw():
 		var y = sin(angle) * radius * offset
 		points.append(Vector2(x, y))
 		
-	draw_polygon(points, [Game.colour02])
+	draw_polygon(points, [Global.colour02])
 	
 	collision_polygon.polygon = points
 

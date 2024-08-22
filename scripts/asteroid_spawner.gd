@@ -16,6 +16,6 @@ func spawn_asteroids() -> void:
 		asteroid_instance.rotation = randf_range(0, 2 * PI)
 		
 		# randomise starting position
-		asteroid_instance.position = Vector2(randf_range(0, Game.screenSize.x), randf_range(0, Game.screenSize.y))
+		asteroid_instance.position = Vector2(randf_range(0, Global.screen_size.x), randf_range(0, Global.screen_size.y))
 		
 		add_child(asteroid_instance)

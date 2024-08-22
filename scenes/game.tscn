@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://oovh3h1u12la"]
+[gd_scene load_steps=4 format=3 uid="uid://oovh3h1u12la"]
 
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_cr04j"]
 [ext_resource type="AudioStream" uid="uid://cw0cumtv1mw10" path="res://assets/dead02.wav" id="2_6padu"]
 [ext_resource type="Script" path="res://scripts/asteroid_spawner.gd" id="2_8fuuv"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_cr04j")
 
 [node name="AsteroidSpawner" type="Node2D" parent="."]
 script = ExtResource("2_8fuuv")

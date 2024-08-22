@@ -5,8 +5,11 @@ var speed = 200
 var maxSpeed = 420
 var rotationSpeed = 3
 var brakeSpeed = 120
+var boost_active = false
 
 var Projectile = preload("res://scenes/projectile.tscn")
+
+@onready var game = $"/root/Game"
 
 @onready var utils = load("res://scripts/utils.gd").new()
 @onready var ship_vector : Node2D = $ShipVector
@@ -25,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		
 	# move
 	if Input.is_action_pressed("boost"):
-		ship_vector.set_boost_active(true)
+		set_boost_active(true)
 		velocity += Vector2(0, -speed).rotated(rotation) * delta
 		
 		if not audio_boost.playing:
@@ -40,7 +43,7 @@ func _physics_process(delta: float) -> void:
 		if velocity.length() > 0:
 			velocity = velocity.move_toward(Vector2.ZERO, brakeSpeed * delta)
 	else:
-		ship_vector.set_boost_active(false)
+		set_boost_active(false)
 
 	# applyu movement
 	move_and_slide()
@@ -50,7 +53,6 @@ func _physics_process(delta: float) -> void:
 		var body := collision.get_collider()
 		print("Collided with: ", body)
 		if body.is_in_group("Asteroids"):
-			Game.death()
 			body.velocity = Vector2(0, -speed).rotated(rotation) * 0.25
 			body.angular_velocity = velocity.length() * 0.08
 			print("Velocity: ", body.velocity.length())
@@ -59,9 +61,32 @@ func _physics_process(delta: float) -> void:
 	# wrap around screen edges
 	position = utils.wrap_around(position)
 		
-	### SHOOTING
+	# SHOOTING
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+		
+func _draw() -> void:
+	var points = [
+		Vector2(-8, 4),
+		Vector2(0, -12),
+		Vector2(8, 4),
+		Vector2(0, 8)
+	]
+	draw_polygon(points, [Global.colour02])
+	
+	if boost_active:
+		var boost_flame_r = [
+			Vector2(1, 4),
+			Vector2(6, 12),
+			Vector2(8, 4),
+		]
+		var boost_flame_l = [
+			Vector2(-1, 4),
+			Vector2(-6, 12),
+			Vector2(-8, 4),
+		]
+		draw_polygon(boost_flame_r, [Global.colour02])
+		draw_polygon(boost_flame_l, [Global.colour02])
 	
 func shoot() -> void:
 	var proj = Projectile.instantiate()
@@ -70,10 +95,13 @@ func shoot() -> void:
 	get_parent().add_child(proj)
 	if not audio_shot.playing:
 		audio_shot.play()
-	
-###
 
 func get_hit() -> void:
-	if is_instance_valid(Game.player_instance):
-		Game.player_instance.queue_free()
-		Game.lives -= 1
+	if is_instance_valid(Global.player_instance):
+		game.player_instance.queue_free()
+		Global.lives -= 1
+
+
+func set_boost_active(active: bool) -> void:
+	boost_active = active
+	queue_redraw()
