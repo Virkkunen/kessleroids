@@ -17,6 +17,7 @@ var Projectile = preload("res://scenes/projectile.tscn")
 @onready var audio_boost : AudioStreamPlayer2D = $boost
 @onready var audio_brake : AudioStreamPlayer2D = $brake
 @onready var audio_shot : AudioStreamPlayer2D = $shot
+@onready var collision_polygon: CollisionPolygon2D = $Hitbox
 
 func _physics_process(delta: float) -> void:
 	hit_detected = false
@@ -72,6 +73,7 @@ func _draw() -> void:
 		Vector2(0, 8)
 	]
 	draw_polygon(points, [Global.colour02])
+	collision_polygon.polygon = points
 	
 	if boost_active:
 		var boost_flame_r = [
