@@ -6,6 +6,9 @@
 [node name="Asteroid" type="RigidBody2D"]
 collision_mask = 7
 mass = 10.0
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 2
 script = ExtResource("1_wup3o")
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]

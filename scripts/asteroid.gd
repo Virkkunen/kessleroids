@@ -36,15 +36,9 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	#angular_damp = 0.0
 	position = utils.wrap_around(position)
 #
-#func _on_body_entered(body: Node) -> void:
-	#print("Asteroid collided with: ", body)
-	#if body.is_in_group("Asteroids"):
-		#pass
-	#elif body.is_in_group("Projectiles"):
-		#print("here")
-	#
-
 func remove_asteroid() -> void:
+	# so the breaking sound can play from the asteroids position
+	# after it breaks, then it can properly remove it 
 	collision_polygon.queue_free()
 	freeze = true # apparently does jack shit
 	linear_velocity = Vector2(0.0, 0.0)

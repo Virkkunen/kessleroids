@@ -59,7 +59,7 @@ func _on_ScoreTimer_timeout() -> void:
 	Global.increase_score()
 	
 func _on_AsteroidTimer_timeout() -> void:
-	asteroid_spawner.spawn_asteroids(randi_range(1, 3))
+	asteroid_spawner.spawn_asteroids(randi_range(1, 3), false)
 	
 func update_lives_label() -> void:
 	var lives_label = $"HUD/MarginLives/LivesLabel"
