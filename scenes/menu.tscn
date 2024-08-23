@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://1km54d6fl37j"]
+[gd_scene load_steps=8 format=3 uid="uid://1km54d6fl37j"]
 
 [ext_resource type="FontFile" uid="uid://bmcmfcanmluhh" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="1_i8w35"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_m2tgh"]
 [ext_resource type="FontFile" uid="uid://b2jwhhtvq7jeo" path="res://assets/fonts/HomeVideoBold-R90Dv.ttf" id="3_mmji4"]
+[ext_resource type="AudioStream" uid="uid://c050ekjoi3sg1" path="res://assets/sfx/click.wav" id="4_m6xx8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lqr4a"]
 
@@ -269,3 +270,6 @@ theme_override_font_sizes/font_size = 196
 text = "Kessleroids"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_m6xx8")

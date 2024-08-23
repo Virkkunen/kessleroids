@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhyjm86dnlmle"]
+[gd_scene load_steps=7 format=3 uid="uid://dhyjm86dnlmle"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_r2sfu"]
 [ext_resource type="FontFile" uid="uid://bmcmfcanmluhh" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="2_slki8"]
+[ext_resource type="AudioStream" uid="uid://bbalshw6ayptu" path="res://assets/sfx/game_over.wav" id="3_lhea5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1bjkv"]
 
@@ -123,3 +124,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_rq26a")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ealr5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ealr5")
 text = "Quit"
+
+[node name="GameOverAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lhea5")

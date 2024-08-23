@@ -46,9 +46,9 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity.normalized() * max_speed
 
 	elif Input.is_action_pressed("brake"):
-		if not audio_brake.playing:
-			audio_brake.play()
 		if velocity.length() > 0:
+			if not audio_brake.playing:
+				audio_brake.play()
 			velocity = velocity.move_toward(Vector2.ZERO, brake_speed * delta)
 	else:
 		set_boost_active(false)

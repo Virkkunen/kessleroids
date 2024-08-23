@@ -16,7 +16,7 @@ signal score_changed
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
-			
+
 func decrease_lives() -> void:
 	if lives == 0:
 		dead = true

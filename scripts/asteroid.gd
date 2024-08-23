@@ -30,7 +30,7 @@ func _draw():
 
 	collision_polygon.polygon = points
 
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 	# controlled on inspector
 	#gravity_scale = 0.0
 	#linear_damp = 0.0
