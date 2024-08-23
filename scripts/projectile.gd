@@ -24,7 +24,6 @@ func _draw() -> void:
 	collision_polygon.polygon = points
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Projectile collided with: ", body)
 	if body.is_in_group("Asteroids"):
 		split_asteroid(body)
 	queue_free()

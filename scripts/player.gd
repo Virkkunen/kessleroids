@@ -59,7 +59,6 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
 		var body := collision.get_collider()
-		print("Player collided with: ", body)
 		if body.is_in_group("Asteroids") and not hit_detected:
 			hit_detected = true
 			Game.get_hit()
