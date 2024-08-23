@@ -29,16 +29,34 @@ func _input(event: InputEvent) -> void:
 		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
 func spawn_player() -> void:
+	delete_asteroids_near_player()
+
 	if not audio_respawn.playing:
 		audio_respawn.play()
+
 	restart_hint.visible = false
+
 	if is_instance_valid(player_instance):
 		player_instance.queue_free()
 	player_instance = player_scene.instantiate()
 	add_child(player_instance)
+
 	player_instance.position = Global.screen_size / 2
+
 	score_timer.start()
 	asteroid_timer.start()
+
+func delete_asteroids_near_player() -> void:
+	var center_radius = 100
+	var screen_center = Global.screen_size / 2
+	var asteroids_to_destroy = []
+
+	for asteroid in get_tree().get_nodes_in_group("Asteroids"):
+		if asteroid.position.distance_to(screen_center) < center_radius:
+			asteroids_to_destroy.append(asteroid)
+
+	for asteroid in asteroids_to_destroy:
+		asteroid.queue_free()
 
 func get_hit() -> void:
 	if is_instance_valid(player_instance):

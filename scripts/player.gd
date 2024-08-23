@@ -33,15 +33,15 @@ func _physics_process(delta: float) -> void:
 		rotation -= rotation_speed * delta
 	elif Input.is_action_pressed("rotate_right"):
 		rotation += rotation_speed * delta
-		
+
 	# move
 	if Input.is_action_pressed("boost"):
 		set_boost_active(true)
 		velocity += Vector2(0, -speed).rotated(rotation) * delta
-		
+
 		if not audio_boost.playing:
 			audio_boost.play()
-		
+
 		if velocity.length() > max_speed:
 			velocity = velocity.normalized() * max_speed
 
@@ -65,14 +65,14 @@ func _physics_process(delta: float) -> void:
 			Game.get_hit()
 			var impulse = collision.get_travel() * 100
 			utils.apply_impulse_to_body(body, impulse, rotation)
-	
+
 	# wrap around screen edges
 	position = utils.wrap_around(position)
-		
+
 	# SHOOTING
 	if Input.is_action_just_pressed("shoot") and can_shoot:
 		shoot()
-		
+
 func _draw() -> void:
 	var points = [
 		Vector2(-8, 4),
@@ -82,7 +82,7 @@ func _draw() -> void:
 	]
 	draw_polygon(points, [Global.colour02])
 	collision_polygon.polygon = points
-	
+
 	if boost_active:
 		var boost_flame_r = [
 			Vector2(1, 4),
@@ -96,7 +96,7 @@ func _draw() -> void:
 		]
 		draw_polygon(boost_flame_r, [Global.colour02])
 		draw_polygon(boost_flame_l, [Global.colour02])
-	
+
 func shoot() -> void:
 	if shots > 0:
 		var proj = Projectile.instantiate()
@@ -115,7 +115,7 @@ func reload() -> void:
 	shots = 5
 	update_ammo_counter()
 	can_shoot = true
-	
+
 func set_boost_active(active: bool) -> void:
 	boost_active = active
 	queue_redraw()
