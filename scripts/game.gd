@@ -47,7 +47,7 @@ func spawn_player() -> void:
 	asteroid_timer.start()
 
 func delete_asteroids_near_player() -> void:
-	var center_radius = 100
+	var center_radius = 150
 	var screen_center = Global.screen_size / 2
 	var asteroids_to_destroy = []
 
