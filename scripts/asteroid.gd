@@ -6,17 +6,18 @@ extends RigidBody2D
 
 @export var min_size = 24
 @export var max_size = 128
-var radius = randf_range(min_size, max_size)
+@export var radius: float
 
 func _ready():
 	add_to_group("Asteroids")
 	custom_integrator = true
-	
+
 func _draw():
 	var points = []
 	var num_points = randi() % 5 + 5
+	radius = randf_range(min_size, max_size)
 	#var radius = 24
-	
+
 	for i in range(num_points):
 		# here comes the math
 		var angle = i * 2 * PI / num_points
@@ -24,9 +25,9 @@ func _draw():
 		var x = cos(angle) * radius * offset
 		var y = sin(angle) * radius * offset
 		points.append(Vector2(x, y))
-		
+
 	draw_polygon(points, [Global.colour02])
-	
+
 	collision_polygon.polygon = points
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
@@ -38,7 +39,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 #
 func remove_asteroid() -> void:
 	# so the breaking sound can play from the asteroids position
-	# after it breaks, then it can properly remove it 
+	# after it breaks, then it can properly remove it
 	collision_polygon.queue_free()
 	freeze = true # apparently does jack shit
 	linear_velocity = Vector2(0.0, 0.0)

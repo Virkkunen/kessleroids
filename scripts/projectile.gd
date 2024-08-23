@@ -12,7 +12,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	position += Vector2(0, -speed * delta).rotated(rotation)
 	position = utils.wrap_around(position)
-	
+
 func _draw() -> void:
 	var points = [
 		Vector2(-4, 0),

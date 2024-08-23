@@ -21,7 +21,7 @@ func _ready() -> void:
 	update_lives_label()
 	update_score_label()
 	spawn_player()
-	
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("respawn") and not is_instance_valid(player_instance) and not Global.dead:
 		spawn_player()
@@ -48,23 +48,23 @@ func get_hit() -> void:
 		Global.decrease_lives()
 		score_timer.stop()
 		restart_hint.visible = true
-		
+
 func _on_lives_changed() -> void:
 	update_lives_label()
-	
+
 func _on_score_changed() -> void:
 	update_score_label()
 
 func _on_ScoreTimer_timeout() -> void:
 	Global.increase_score()
-	
+
 func _on_AsteroidTimer_timeout() -> void:
 	asteroid_spawner.spawn_asteroids(randi_range(1, 3), false)
-	
+
 func update_lives_label() -> void:
 	var lives_label = $"HUD/MarginLives/LivesLabel"
 	lives_label.text = "Lives: " + str(Global.lives)
-	
+
 func update_score_label() -> void:
 	var score_label = $HUD/MarginScore/ScoreLabel
 	score_label.text = "Score: " + str(Global.score)
