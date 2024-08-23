@@ -1,7 +1,7 @@
 - [x] fix asteroid collision velocity/rotation
-	- still needs better physics but that's beyong my capabilities
+	- still needs better physics but that's beyond my capabilities
 - [x] have projectiles break asteroids
 - [ ] have projectiles damage ship
 - [x] asteroids break into smaller ones with random velocities, rotation and direction
 - [ ] add breaking effects
-- [ ] fix button sounds
+- [x] fix button sounds
