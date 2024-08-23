@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Kessleroids"
 config/description="An Asteroids-like with added Kessler Syndrome. Inspired by Attoparsec's idea."
-config/version="0.2.9"
+config/version="0.3.0"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.133333, 0.137255, 0.137255, 1)
@@ -26,8 +26,9 @@ Global="*res://scripts/Global.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=2
+window/size/mode=3
 window/size/resizable=false
+window/size/borderless=true
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 window/vsync/vsync_mode=0

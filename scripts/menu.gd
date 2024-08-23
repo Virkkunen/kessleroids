@@ -6,6 +6,7 @@ extends Control
 @onready var quit_button = $MenuLayer/QuitButton
 @onready var back_button = $BackButton
 @onready var click_sound = $ClickSound
+@onready var version_label = $MenuLayer/VersionLabel
 
 @onready var menu_layer = $MenuLayer
 @onready var help_layer = $HelpLayer
@@ -19,6 +20,7 @@ func _ready() -> void:
 	credits_layer.visible = false
 	back_button.visible = false
 	menu_layer.visible = true
+	version_label.text = ProjectSettings.get_setting("application/config/version")
 
 	play_button.pressed.connect(_on_play_button_pressed)
 	help_button.pressed.connect(_on_help_button_pressed)
@@ -51,5 +53,4 @@ func _on_back_button_pressed() -> void:
 	menu_layer.visible = true
 
 func _on_play_button_pressed() -> void:
-	click_sound.play()
 	get_tree().change_scene_to_file(game_scene)

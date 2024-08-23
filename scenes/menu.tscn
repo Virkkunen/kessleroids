@@ -150,6 +150,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_srkhb")
 theme_override_styles/normal = SubResource("StyleBoxFlat_srkhb")
 text = "Quit"
 
+[node name="VersionLabel" type="Label" parent="MenuLayer"]
+offset_left = 1806.0
+offset_top = 1057.0
+offset_right = 1910.0
+offset_bottom = 1080.0
+theme_override_colors/font_color = Color(0.513726, 0.690196, 0.494118, 1)
+theme_override_colors/font_shadow_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_fonts/font = ExtResource("1_i8w35")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="HelpLayer" type="CanvasGroup" parent="."]
 visible = false
 z_index = 20
@@ -218,6 +230,9 @@ home video font
 
 [b]attoparsec[/b]
 original idea & execution
+
+[b]saintfrog[/b]
+QA & help
 [/center]"
 
 [node name="BackButton" type="Button" parent="."]
